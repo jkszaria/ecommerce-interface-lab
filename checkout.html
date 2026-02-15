@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout & Shippings</title>
+</head>
+<body>
+
+<header>
+  <nav>
+    <center>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </center>
+  </nav>
+</header>
+
+<hr>
+
+<!-- Use <section> to group different parts of the checkout process. -->
+<center>
+  <h1>Checkout</h1>
+
+  <!-- A <fieldset> with a <label>Shipping Address</label> containing inputs for name, street, and zip code. -->
+  <fieldset>
+    <legend>Shipping Address</legend>
+    <label>Name: <input type="text" required></label><br>
+    <label>Street: <input type="text" required></label><br>
+    <label>Zip Code: <input type="text" required></label>
+  </fieldset>
+
+  <!-- A <form> for payment details. Use <input type="radio"> for choosing between "Credit Card" and "PayPal." -->
+  <fieldset>
+    <legend>Payment Method</legend>
+    <label><input type="radio" name="payment" required> Credit Card</label><br>
+    <label><input type="radio" name="payment"> PayPal</label>
+  </fieldset>
+
+  <!-- An <aside> that sticks to the side of the page, summarizing the final costs before the user hits "Place Order." -->
+  <p>Items Total: $50</p>
+  <p>Shipping: $5</p>
+  <p>Total: $55</p>
+  <button>Place Order</button>
+</center>
+
+</body>
+</html>
