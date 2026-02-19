@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>User Account Management</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -37,31 +38,41 @@
 
 <hr>
 
-<!-- Order History using details and summary -->
+<!-- Order History -->
 <center>
-  <h2>Order History</h2>
+  <h2 id="order-history">Order History</h2>
 </center>
 
-<details>
-  <summary><b>Order #12345</b> - January 15, 2024 - Total: $75.00</summary>
-  <p><b>Status:</b> Delivered</p>
-  <p><b>Items:</b> Sony Headphones (2), Controller (1)</p>
-  <p><b>Total:</b> $75.00</p>
-</details>
+<ul class="order-history">
 
-<details>
-  <summary><b>Order #12344</b> - January 10, 2024 - Total: $150.00</summary>
-  <p><b>Status:</b> Delivered</p>
-  <p><b>Items:</b> Nintendo Switch (1), Mechanical Keyboard (2)</p>
-  <p><b>Total:</b> $150.00</p>
-</details>
+  <li>
+    <details>
+      <summary><b>Order #12345</b> - January 15, 2024 - Total: $75.00</summary>
+      <p><b>Status:</b> Delivered</p>
+      <p><b>Items:</b> Sony Headphones (2), Controller (1)</p>
+      <p><b>Total:</b> $75.00</p>
+    </details>
+  </li>
 
-<details>
-  <summary><b>Order #12343</b> - December 28, 2023 - Total: $45.00</summary>
-  <p><b>Status:</b> Delivered</p>
-  <p><b>Items:</b> Sony Headphones (3)</p>
-  <p><b>Total:</b> $45.00</p>
-</details>
+  <li>
+    <details>
+      <summary><b>Order #12344</b> - January 10, 2024 - Total: $150.00</summary>
+      <p><b>Status:</b> Delivered</p>
+      <p><b>Items:</b> Nintendo Switch (1), Mechanical Keyboard (2)</p>
+      <p><b>Total:</b> $150.00</p>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><b>Order #12343</b> - December 28, 2023 - Total: $45.00</summary>
+      <p><b>Status:</b> Delivered</p>
+      <p><b>Items:</b> Sony Headphones (3)</p>
+      <p><b>Total:</b> $45.00</p>
+    </details>
+  </li>
+
+</ul>
 
 <hr>
 
@@ -69,6 +80,7 @@
 <center>
   <h3>Recent Purchases</h3>
 </center>
+
 <dl>
   <dt>Order #12345 - January 15, 2024</dt>
   <dd>Status: Delivered | Total: $75.00</dd>
@@ -84,7 +96,7 @@
 
 <!-- Profile Settings Form -->
 <center>
-  <h2>Profile Settings</h2>
+  <h2 id="profile-settings">Profile Settings</h2>
 
   <form>
     <label>Name: <input type="text" value="Princess" required></label><br>
@@ -98,7 +110,7 @@
 
 <!-- Wishlist -->
 <center>
-  <h2>My Wishlist</h2>
+  <h2 id="wishlist">My Wishlist</h2>
   
   <table>
     <tr>
