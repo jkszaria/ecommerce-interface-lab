@@ -1,12 +1,10 @@
-function checkVariable(input) {
-    switch (typeof input) {
-        case "string": return "string";
-        case "number": return "number";
-        case "boolean": return "boolean";
-        case "bigint": return "bigint";
-        case "undefined": return "undefined";
-        case "object": return "object";
-        default: return "unknown";
+class Item {
+    #discount = 0.1;
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    get finalPrice() {
+        return this.price - (this.price * this.#discount);
     }
 }
-
