@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,3 +51,61 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <center>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </center>
+  </nav>
+</header>
+
+<hr>
+
+<!-- An unordered list <ul> where each <li> represents a cart item. -->
+<center>
+  <h1>Your Shopping Cart</h1>
+</center>
+<!-- Cart Container (for :empty selector) -->
+<ul class="cart-container">
+  <li>
+    <img src="pics/product1.png" alt="Product One" width="100">
+    <h3>Product One</h3>
+    <p>Price: <span class="price">10</span></p>
+    <!-- Use <input type="number"> inside each item for quantity adjustments. -->
+    <label>Quantity: <input type="number" value="1"></label>
+  </li>
+
+  <li>
+    <img src="pics/product2.webp" alt="Product Two" width="100">
+    <h3>Product Two</h3>
+    <p>Price: <span class="price">20</span></p>
+    <label>Quantity: <input type="number" value="2"></label>
+  </li>
+</ul>
+
+<!-- A <section> or <div> at the bottom for the subtotal. -->
+<p>Subtotal: <span class="price">50</span></p>
+
+<!-- A "Proceed to Checkout" <a> styled as a button that links to the next step. -->
+<a href="checkout.html">Proceed to Checkout</a>
+
+<!-- An empty-state message wrapped in a conditional-style <section> -->
+<p>Your cart is currently empty.</p>
+
+</body>
+</html>
+>>>>>>> 9c6619e429f9fff904b5c9d5b5f25dad17c53b1a

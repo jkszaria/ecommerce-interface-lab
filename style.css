@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*TASK 1: THE VISUAL FOUNDATION (GLOBAL STYLES) */
 
@@ -476,3 +477,211 @@ header nav ul li {
 button.add-to-cart:hover {
     animation: pulse 0.4s ease-in-out;
 }
+=======
+/*TASK 1: THE VISUAL FOUNDATION (GLOBAL STYLES) */
+
+/* CSS VARIABLES - Color System */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22;
+    --bg-light: #f4f4f4;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --border-light: #dddddd;
+}
+
+/* Global Body Styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Typography for Headings */
+h1, h2, h3 {
+    font-family: Georgia, serif;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+/*TASK 2: INTERACTIVE STATES & TRANSITIONS*/
+
+/* Navigation List Styling */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* Navigation Links (Default State) */
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover State */
+nav a:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Active State (Pressed Effect) */
+nav a:active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Buttons Default */
+button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button Hover */
+button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Button Active */
+button:active {
+    background-color: #1a252f;
+}
+
+/* Focus State for Accessibility */
+input:focus,
+button:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+
+/*TASK 3: PRODUCT LIST STYLING (CARDS)*/
+
+/* Product Card Styling */
+article {
+    width: 220px;
+    display: inline-block;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    vertical-align: top;
+}
+
+/* Alternating Card Colors */
+article:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* Images Inside Cards */
+article img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Basic Table Styling */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+}
+
+/*TASK 4: ADVANCED SELECTORS & PSEUDO-ELEMENTS */
+
+/* :empty pseudo-class for cart */
+.cart-container:empty {
+    background-color: #ffe6e6;
+    padding: 20px;
+    border: 2px dashed red;
+}
+
+/* Add currency symbol automatically */
+.price::before {
+    content: "₱";
+    font-weight: bold;
+}
+
+/* Style required fields in signup.html */
+form input:required {
+    border: 2px solid red;
+}
+
+/* Change style when input is valid */
+form input:valid {
+    border: 2px solid green;
+}/*
+   TASK 5 STYLES*/
+
+/* 1. Table styling & first column using :first-child */
+table {
+    width: 50%;
+    margin: 15px auto;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+}
+
+th, td {
+    border: 1px solid var(--border-light);
+    padding: 10px;
+}
+
+/* First column styled */
+table td:first-child {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Table header */
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 2. ::marker for order history list */
+.order-history li::marker {
+    color: var(--accent-color);
+    font-size: 1.3em;
+}
+
+/* 3. ::before and ::after for user reviews */
+blockquote {
+    font-style: italic;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    margin: 10px auto;
+    width: 60%;
+    border-left: 5px solid var(--accent-color);
+}
+
+/* Opening quotation mark */
+blockquote::before {
+    content: "“";
+    color: var(--accent-color);
+    font-size: 2em;
+}
+
+/* Closing quotation mark */
+blockquote::after {
+    content: "”";
+    color: var(--accent-color);
+    font-size: 2em;
+}
+>>>>>>> 9c6619e429f9fff904b5c9d5b5f25dad17c53b1a
