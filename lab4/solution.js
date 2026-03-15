@@ -1,12 +1,6 @@
-function checkVariable(input) {
-    switch (typeof input) {
-        case "string": return "string";
-        case "number": return "number";
-        case "boolean": return "boolean";
-        case "bigint": return "bigint";
-        case "undefined": return "undefined";
-        case "object": return "object";
-        default: return "unknown";
+function calculateTotal(...numbers) {
+    if (numbers.some(n => typeof n !== "number")) {
+        throw new TypeError("Invalid input: All arguments must be numbers");
     }
+    return numbers.reduce((a,b) => a + b, 0);
 }
-
