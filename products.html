@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,3 +73,84 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Listing View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <center>
+      <ul>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Management</a></li>
+      </ul>
+    </center>
+  </nav>
+</header>
+
+<hr>
+<!-- A <main> section containing a grid of products. -->
+
+<main>
+  <section>
+    <center>
+      <h1>Product Listing</h1>
+
+<!--Each product inside an <article> with an image, price, and "View Details" link that
+links to the product detail page. -->
+      <table>
+        <tr>
+          <td>
+            <article>
+              <img src="pics/product1.png" alt="Product 1" width="200"><br>
+              <p><b>Price:</b> $10</p>
+              <a href="detail.html">View Details</a>
+            </article>
+          </td>
+
+          <td>
+            <article>
+              <img src="pics/product2.webp" alt="Product 2" width="200"><br>
+              <p><b>Price:</b> $20</p>
+              <a href="detail.html">View Details</a>
+            </article>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </section>
+</main>
+
+<hr>
+
+<!--An <aside> containing a filter form with checkbox and radio buttons. -->
+<aside>
+  <center>
+    <form>
+      <fieldset>
+        <legend>Filter by Category</legend>
+        <label><input type="checkbox"> Electronics</label><br>
+        <label><input type="checkbox"> Clothing</label>
+      </fieldset>
+
+      <br>
+
+      <fieldset>
+        <legend>Filter by Price</legend>
+        <label><input type="radio" name="price"> Low</label><br>
+        <label><input type="radio" name="price"> High</label>
+      </fieldset>
+    </form>
+  </center>
+</aside>
+
+</body>
+</html>
+>>>>>>> 9c6619e429f9fff904b5c9d5b5f25dad17c53b1a
