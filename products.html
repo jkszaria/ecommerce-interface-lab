@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Listing View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="landing.html" class="logo">MyStore</a>
+    <nav>
+      <ul>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Management</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<h1 style="text-align:center; padding: 16px 0 0;">Product Listing</h1>
+<div class="products-layout">
+  <aside>
+    <form>
+      <fieldset>
+        <legend>Filter by Category</legend>
+        <label><input type="checkbox"> Electronics</label><br>
+        <label><input type="checkbox"> Clothing</label>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Filter by Price</legend>
+        <label><input type="radio" name="price"> Low</label><br>
+        <label><input type="radio" name="price"> High</label>
+      </fieldset>
+    </form>
+  </aside>
+
+  <main>
+    <div class="product-grid">
+      <article>
+        <img src="pics/product1.png" alt="Product 1">
+        <p><b>Sony Headphones</b></p>
+        <p><b>Price:</b> $10</p>
+        <a href="detail.html">View Details</a>
+      </article>
+      <article>
+        <img src="pics/product2.webp" alt="Product 2">
+        <p><b>Controller</b></p>
+        <p><b>Price:</b> $20</p>
+        <a href="detail.html">View Details</a>
+      </article>
+      <article>
+        <img src="pics/product3.webp" alt="Product 3">
+        <p><b>Nintendo Switch</b></p>
+        <p><b>Price:</b> $120</p>
+        <a href="detail.html">View Details</a>
+      </article>
+      <article>
+        <img src="pics/product4.webp" alt="Product 4">
+        <p><b>Mechanical Keyboard</b></p>
+        <p><b>Price:</b> $45</p>
+        <a href="detail.html">View Details</a>
+      </article>
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

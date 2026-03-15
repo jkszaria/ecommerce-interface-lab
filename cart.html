@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="landing.html" class="logo">MyStore</a>
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<h1 style="text-align:center; padding: 16px 0 0;">Your Shopping Cart</h1>
+<ul class="cart-container">
+  <li>
+    <img src="pics/product1.png" alt="Product One">
+    <div class="cart-info">
+      <h3>Product One</h3>
+      <p>Price: <span class="price">10</span></p>
+      <label>Quantity: <input type="number" value="1" min="1"></label>
+    </div>
+  </li>
+  <li>
+    <img src="pics/product2.webp" alt="Product Two">
+    <div class="cart-info">
+      <h3>Product Two</h3>
+      <p>Price: <span class="price">20</span></p>
+      <label>Quantity: <input type="number" value="2" min="1"></label>
+    </div>
+  </li>
+</ul>
+
+<div style="padding: 0 16px 16px;">
+  <p>Subtotal: <span class="price">50</span></p>
+  <a href="checkout.html"><button>Proceed to Checkout</button></a>
+</div>
+
+<p style="padding: 0 16px; color: #888;">Your cart is currently empty.</p>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout & Shippings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="landing.html" class="logo">MyStore</a>
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<h1 style="text-align:center; padding: 16px 0 0;">Checkout</h1>
+
+<div class="checkout-layout">
+
+  <div class="checkout-forms">
+    <fieldset>
+      <legend>Shipping Address</legend>
+      <label>Name: <input type="text" required></label><br><br>
+      <label>Street: <input type="text" required></label><br><br>
+      <label>Zip Code: <input type="text" required></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Payment Method</legend>
+      <label><input type="radio" name="payment" required> Credit Card</label><br>
+      <label><input type="radio" name="payment"> PayPal</label>
+    </fieldset>
+  </div>
+
+  <aside>
+    <h3>Order Summary</h3>
+    <p>Items Total: $50</p>
+    <p>Shipping: $5</p>
+    <p><strong>Total: $55</strong></p>
+    <button>Place Order</button>
+  </aside>
+
+</div>
+
+</body>
+</html>

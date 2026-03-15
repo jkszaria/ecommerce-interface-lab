@@ -1,0 +1,478 @@
+
+/*TASK 1: THE VISUAL FOUNDATION (GLOBAL STYLES) */
+
+/* CSS VARIABLES - Color System */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #361ea1;
+    --bg-light: #FFFCEB;
+    --card-bg: #acd0eb;
+    --text-main: #333333;
+    --border-light: #0f0e61;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, serif;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Task 5: Fluid images - prevents overflow on all screen sizes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* === TASK 2: NAV & BUTTONS === */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; 
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+nav a:active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+
+button:active {
+    background-color: #1a252f;
+}
+
+input:focus,
+button:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+
+/* === TASK 3: PRODUCT CARDS === */
+article {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+article:nth-child(even) {
+    background-color: #acd0eb;
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+/* === TASK 4: PSEUDO-ELEMENTS === */
+.cart-container:empty {
+    background-color: #ffe6e6;
+    padding: 20px;
+    border: 2px dashed red;
+}
+
+.price::before {
+    content: "P";
+    font-weight: bold;
+}
+
+form input:required {
+    border: 2px solid red;
+}
+
+form input:valid {
+    border: 2px solid green;
+}
+
+
+/* === TASK 5: TABLES === */
+table {
+    width: 50%;
+    margin: 15px auto;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+}
+
+th, td {
+    border: 1px solid var(--border-light);
+    padding: 10px;
+}
+
+table td:first-child {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.order-history li::marker {
+    color: var(--accent-color);
+    font-size: 1.3em;
+}
+
+blockquote {
+    font-style: italic;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    margin: 10px auto;
+    width: 60%;
+    border-left: 5px solid var(--accent-color);
+}
+
+blockquote::before {
+    content: "\201C";
+    color: var(--accent-color);
+    font-size: 2em;
+}
+
+blockquote::after {
+    content: "\201D";
+    color: var(--accent-color);
+    font-size: 2em;
+}
+
+
+/* MOBILE */
+
+/*  Task 2 */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--border-light);
+    padding: 10px 16px;
+}
+
+.header-inner {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: block;
+    margin: 0;
+}
+
+/* Task 3 */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+}
+
+.product-grid article {
+    margin: 0;
+}
+
+/* Task 6 */
+.products-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 20px;
+}
+
+.products-layout aside {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* Task 4 */
+.cart-container {
+    list-style: none;
+    padding: 16px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-container li {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 12px;
+    flex-wrap: wrap;
+}
+
+.cart-container li img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.cart-container li h3 {
+    margin: 0 0 4px 0;
+}
+
+.cart-container li p {
+    margin: 0 0 4px 0;
+}
+
+.cart-info {
+    flex: 1;
+}
+
+/* Task 4 */
+.checkout-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.checkout-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkout-layout fieldset {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--card-bg);
+}
+
+.checkout-layout aside {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+/* Task 4*/
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 250px;
+    padding: 40px 16px;
+    background-color: #e8f0f7;
+    margin: 16px;
+}
+
+/* Task 5*/
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+    width: 100%;
+    min-width: 300px;
+}
+
+
+
+/*  TABLET */
+@media (min-width: 481px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cart-container li img {
+        width: 100px;
+        height: 100px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    blockquote {
+        width: 80%;
+    }
+
+}
+
+
+/* DESKTOP  */
+@media (min-width: 769px) {
+    .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    header nav ul {
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+    }
+
+    .products-layout {
+        display: grid;
+        grid-template-columns: 22% 1fr;
+        align-items: start;
+    }
+
+    .checkout-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .checkout-layout aside {
+        min-width: 220px;
+        max-width: 280px;
+        flex-shrink: 0;
+    }
+
+    table {
+        width: 50%;
+    }
+
+    blockquote {
+        width: 60%;
+    }
+
+}
+
+
+/*  TASK 7: @keyframes ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.product-grid article {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.product-grid article:nth-child(1) { animation-delay: 0.0s; }
+.product-grid article:nth-child(2) { animation-delay: 0.1s; }
+.product-grid article:nth-child(3) { animation-delay: 0.2s; }
+.product-grid article:nth-child(4) { animation-delay: 0.3s; }
+.product-grid article:nth-child(5) { animation-delay: 0.4s; }
+.product-grid article:nth-child(6) { animation-delay: 0.5s; }
+.product-grid article:nth-child(7) { animation-delay: 0.6s; }
+.product-grid article:nth-child(8) { animation-delay: 0.7s; }
+
+.hero-section h1 {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.hero-section p {
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.2s forwards;
+}
+
+.hero-section button {
+    opacity: 1;
+    animation: slideUp 0.8s ease 0.2s forwards;
+}
+
+.hero-section button:hover,
+.product-grid article button:hover,
+button.add-to-cart:hover {
+    animation: pulse 0.4s ease-in-out;
+}

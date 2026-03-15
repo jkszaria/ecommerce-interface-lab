@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- [LAB 3 - CHANGED] header now has .header-inner div for flexbox layout (Task 2) -->
+<header>
+  <div class="header-inner">
+    <!-- [LAB 3 - ADDED] logo link -->
+    <a href="landing.html" class="logo">MyStore</a>
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div style="max-width: 500px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; border: 1px solid #ddd;">
+  <h1 style="text-align:center;">Create Your Account</h1>
+
+  <form>
+    <label>Full Name: <input type="text" required></label><br><br>
+    <label>Email: <input type="email" required></label><br><br>
+    <label>Password: <input type="password" required></label><br><br>
+    <label>Confirm Password: <input type="password" required></label><br><br>
+    <button style="width:100%;">Sign Up</button>
+  </form>
+
+  <p style="text-align:center;">Already have an account? <a href="account.html">Login here</a></p>
+</div>
+
+</body>
+</html>
