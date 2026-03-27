@@ -1,15 +1,14 @@
-<<<<<<< HEAD
-
-/*TASK 1: THE VISUAL FOUNDATION (GLOBAL STYLES) */
-
-/* CSS VARIABLES - Color System */
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #361ea1;
-    --bg-light: #FFFCEB;
-    --card-bg: #acd0eb;
-    --text-main: #333333;
-    --border-light: #0f0e61;
+    --primary-color: #1a2a3a;
+    --accent-color:  #2e6da4;
+    --bg-light:      #f0f2f5;
+    --card-bg:       #ffffff;
+    --card-alt:      #ffffff;
+    --text-main:     #2d3748;
+    --text-muted:    #6b7a8d;
+    --border-light:  #c9d4e0;
+    --header-bg:     #1a2a3a;
+    --header-text:   #e8edf2;
 }
 
 body {
@@ -26,19 +25,22 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-/* Task 5: Fluid images - prevents overflow on all screen sizes */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 24px 0;
+}
 
-/* === TASK 2: NAV & BUTTONS === */
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; 
+    margin: 0;
 }
 
 nav ul li {
@@ -70,35 +72,41 @@ button {
     color: #ffffff;
     border: none;
     padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: var(--primary-color);
+    background-color: #1d4f78;
 }
 
 button:active {
-    background-color: #1a252f;
+    background-color: #122f4b;
 }
 
 input:focus,
 button:focus {
     outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
+input.error {
+    border: 2px solid #c0392b;
+    background-color: #fdf0ef;
+}
 
-/* === TASK 3: PRODUCT CARDS === */
 article {
     background-color: var(--card-bg);
     border: 1px solid var(--border-light);
     border-radius: 8px;
-    padding: 10px;
+    padding: 12px;
     vertical-align: top;
+    box-shadow: 0 1px 4px rgba(26, 42, 58, 0.07);
 }
 
 article:nth-child(even) {
-    background-color: #acd0eb;
+    background-color: var(--card-alt);
 }
 
 article img {
@@ -107,34 +115,32 @@ article img {
     border-radius: 5px;
 }
 
-
-/* === TASK 4: PSEUDO-ELEMENTS === */
 .cart-container:empty {
-    background-color: #ffe6e6;
+    background-color: #fdf0ef;
     padding: 20px;
-    border: 2px dashed red;
+    border: 2px dashed #c0392b;
+    border-radius: 8px;
 }
 
 .price::before {
-    content: "P";
+    content: "₱";
     font-weight: bold;
 }
 
 form input:required {
-    border: 2px solid red;
+    border: 2px solid #c0392b;
 }
 
 form input:valid {
-    border: 2px solid green;
+    border: 2px solid #27ae60;
 }
 
-
-/* === TASK 5: TABLES === */
 table {
     width: 50%;
     margin: 15px auto;
     border-collapse: collapse;
     background-color: var(--card-bg);
+    box-shadow: 0 1px 4px rgba(26, 42, 58, 0.08);
 }
 
 th, td {
@@ -149,7 +155,7 @@ table td:first-child {
 
 th {
     background-color: var(--primary-color);
-    color: white;
+    color: #e8edf2;
 }
 
 .order-history li::marker {
@@ -159,11 +165,12 @@ th {
 
 blockquote {
     font-style: italic;
-    background-color: #ffffff;
+    background-color: var(--card-alt);
     padding: 10px 15px;
     margin: 10px auto;
     width: 60%;
     border-left: 5px solid var(--accent-color);
+    border-radius: 0 6px 6px 0;
 }
 
 blockquote::before {
@@ -178,19 +185,26 @@ blockquote::after {
     font-size: 2em;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
 
-/* MOBILE */
+.table-responsive table {
+    width: 100%;
+    min-width: 300px;
+}
 
-/*  Task 2 */
 header {
-    background-color: var(--card-bg);
-    border-bottom: 2px solid var(--border-light);
+    background-color: var(--header-bg);
+    border-bottom: 2px solid #253d52;
     padding: 10px 16px;
 }
 
 .header-inner {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     align-items: center;
     gap: 8px;
 }
@@ -199,8 +213,9 @@ header {
     font-family: Georgia, serif;
     font-size: 1.4rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--header-text);
     text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
 header nav ul {
@@ -218,7 +233,17 @@ header nav ul li {
     margin: 0;
 }
 
-/* Task 3 */
+header nav a {
+    color: var(--header-text);
+    opacity: 0.85;
+}
+
+header nav a:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    opacity: 1;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -230,7 +255,6 @@ header nav ul li {
     margin: 0;
 }
 
-/* Task 6 */
 .products-layout {
     display: flex;
     flex-direction: column;
@@ -244,9 +268,9 @@ header nav ul li {
     border-radius: 8px;
     padding: 16px;
     box-sizing: border-box;
+    box-shadow: 0 1px 4px rgba(26, 42, 58, 0.07);
 }
 
-/* Task 4 */
 .cart-container {
     list-style: none;
     padding: 16px;
@@ -258,7 +282,7 @@ header nav ul li {
 
 .cart-container li {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     align-items: center;
     gap: 16px;
     background-color: var(--card-bg);
@@ -266,6 +290,7 @@ header nav ul li {
     border-radius: 8px;
     padding: 12px;
     flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(26, 42, 58, 0.06);
 }
 
 .cart-container li img {
@@ -276,19 +301,13 @@ header nav ul li {
     flex-shrink: 0;
 }
 
-.cart-container li h3 {
-    margin: 0 0 4px 0;
-}
-
-.cart-container li p {
-    margin: 0 0 4px 0;
-}
+.cart-container li h3 { margin: 0 0 4px 0; }
+.cart-container li p  { margin: 0 0 4px 0; }
 
 .cart-info {
     flex: 1;
 }
 
-/* Task 4 */
 .checkout-layout {
     display: flex;
     flex-direction: column;
@@ -309,6 +328,7 @@ header nav ul li {
     border-radius: 8px;
     padding: 16px;
     background-color: var(--card-bg);
+    margin-bottom: 16px;
 }
 
 .checkout-layout aside {
@@ -316,9 +336,9 @@ header nav ul li {
     border: 1px solid var(--border-light);
     border-radius: 8px;
     padding: 16px;
+    box-shadow: 0 1px 4px rgba(26, 42, 58, 0.07);
 }
 
-/* Task 4*/
 .hero-section {
     display: flex;
     flex-direction: column;
@@ -327,25 +347,183 @@ header nav ul li {
     text-align: center;
     min-height: 250px;
     padding: 40px 16px;
-    background-color: #e8f0f7;
+    background-color: #dce6f0;
     margin: 16px;
+    border-radius: 10px;
 }
 
-/* Task 5*/
-.table-responsive {
-    overflow-x: auto;
+.account-layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+.account-tabs ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+}
+
+.account-tabs a {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    background-color: var(--card-bg);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.account-tabs a:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+.order-details {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(26, 42, 58, 0.06);
+}
+
+.order-summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--primary-color);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-summary::-webkit-details-marker { display: none; }
+
+.order-summary::before {
+    content: "▶";
+    font-size: 0.7em;
+    transition: transform 0.2s;
+    color: var(--accent-color);
+}
+
+details[open] .order-summary::before {
+    transform: rotate(90deg);
+}
+
+.order-body {
+    padding: 12px 20px 16px;
+    border-top: 1px solid var(--border-light);
+    background-color: var(--card-alt);
+}
+
+.order-body ul {
+    margin: 6px 0 12px 16px;
+    padding: 0;
+}
+
+.order-body ul li {
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.profile-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.profile-form input {
+    padding: 8px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    font-size: 0.95rem;
     width: 100%;
-    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    background-color: var(--card-bg);
+    color: var(--text-main);
 }
 
-.table-responsive table {
-    width: 100%;
-    min-width: 300px;
+.profile-form button {
+    align-self: flex-start;
+    margin-top: 4px;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 
-/*  TABLET */
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInCard {
+    from { opacity: 0.3; transform: scale(0.95); }
+    to   { opacity: 1;   transform: scale(1); }
+}
+
+.product-grid article { animation: fadeIn 0.6s ease forwards; }
+
+.product-grid article:nth-child(1) { animation-delay: 0.0s; }
+.product-grid article:nth-child(2) { animation-delay: 0.1s; }
+.product-grid article:nth-child(3) { animation-delay: 0.2s; }
+.product-grid article:nth-child(4) { animation-delay: 0.3s; }
+.product-grid article:nth-child(5) { animation-delay: 0.4s; }
+.product-grid article:nth-child(6) { animation-delay: 0.5s; }
+.product-grid article:nth-child(7) { animation-delay: 0.6s; }
+.product-grid article:nth-child(8) { animation-delay: 0.7s; }
+
+.hero-section h1 { animation: slideUp 0.8s ease forwards; }
+
+.hero-section p {
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.2s forwards;
+}
+
+.hero-section button {
+    opacity: 1;
+    animation: slideUp 0.8s ease 0.2s forwards;
+}
+
+.hero-section button:hover,
+.product-grid article button:hover,
+button.add-to-cart:hover {
+    animation: pulse 0.4s ease-in-out;
+}
+
+.fade-in {
+    animation: fadeInCard 0.6s ease forwards;
+}
+
 @media (min-width: 481px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -356,18 +534,10 @@ header nav ul li {
         height: 100px;
     }
 
-    table {
-        width: 100%;
-    }
-
-    blockquote {
-        width: 80%;
-    }
-
+    table      { width: 100%; }
+    blockquote { width: 80%; }
 }
 
-
-/* DESKTOP  */
 @media (min-width: 769px) {
     .header-inner {
         flex-direction: row;
@@ -404,284 +574,6 @@ header nav ul li {
         flex-shrink: 0;
     }
 
-    table {
-        width: 50%;
-    }
-
-    blockquote {
-        width: 60%;
-    }
-
+    table      { width: 50%; }
+    blockquote { width: 60%; }
 }
-
-
-/*  TASK 7: @keyframes ANIMATIONS */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-.product-grid article {
-    animation: fadeIn 0.6s ease forwards;
-}
-
-.product-grid article:nth-child(1) { animation-delay: 0.0s; }
-.product-grid article:nth-child(2) { animation-delay: 0.1s; }
-.product-grid article:nth-child(3) { animation-delay: 0.2s; }
-.product-grid article:nth-child(4) { animation-delay: 0.3s; }
-.product-grid article:nth-child(5) { animation-delay: 0.4s; }
-.product-grid article:nth-child(6) { animation-delay: 0.5s; }
-.product-grid article:nth-child(7) { animation-delay: 0.6s; }
-.product-grid article:nth-child(8) { animation-delay: 0.7s; }
-
-.hero-section h1 {
-    animation: slideUp 0.8s ease forwards;
-}
-
-.hero-section p {
-    opacity: 0;
-    animation: slideUp 0.8s ease 0.2s forwards;
-}
-
-.hero-section button {
-    opacity: 1;
-    animation: slideUp 0.8s ease 0.2s forwards;
-}
-
-.hero-section button:hover,
-.product-grid article button:hover,
-button.add-to-cart:hover {
-    animation: pulse 0.4s ease-in-out;
-}
-=======
-/*TASK 1: THE VISUAL FOUNDATION (GLOBAL STYLES) */
-
-/* CSS VARIABLES - Color System */
-:root {
-    --primary-color: #2c3e50;
-    --accent-color: #e67e22;
-    --bg-light: #f4f4f4;
-    --card-bg: #ffffff;
-    --text-main: #333333;
-    --border-light: #dddddd;
-}
-
-/* Global Body Styling */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* Typography for Headings */
-h1, h2, h3 {
-    font-family: Georgia, serif;
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-
-/*TASK 2: INTERACTIVE STATES & TRANSITIONS*/
-
-/* Navigation List Styling */
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline-block;
-    margin: 10px;
-}
-
-/* Navigation Links (Default State) */
-nav a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
-    padding: 8px 12px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Hover State */
-nav a:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    border-radius: 5px;
-}
-
-/* Active State (Pressed Effect) */
-nav a:active {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
-
-/* Buttons Default */
-button {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* Button Hover */
-button:hover {
-    background-color: var(--primary-color);
-}
-
-/* Button Active */
-button:active {
-    background-color: #1a252f;
-}
-
-/* Focus State for Accessibility */
-input:focus,
-button:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-
-/*TASK 3: PRODUCT LIST STYLING (CARDS)*/
-
-/* Product Card Styling */
-article {
-    width: 220px;
-    display: inline-block;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px;
-    vertical-align: top;
-}
-
-/* Alternating Card Colors */
-article:nth-child(even) {
-    background-color: #fafafa;
-}
-
-/* Images Inside Cards */
-article img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-/* Basic Table Styling */
-table {
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 8px;
-}
-
-/*TASK 4: ADVANCED SELECTORS & PSEUDO-ELEMENTS */
-
-/* :empty pseudo-class for cart */
-.cart-container:empty {
-    background-color: #ffe6e6;
-    padding: 20px;
-    border: 2px dashed red;
-}
-
-/* Add currency symbol automatically */
-.price::before {
-    content: "₱";
-    font-weight: bold;
-}
-
-/* Style required fields in signup.html */
-form input:required {
-    border: 2px solid red;
-}
-
-/* Change style when input is valid */
-form input:valid {
-    border: 2px solid green;
-}/*
-   TASK 5 STYLES*/
-
-/* 1. Table styling & first column using :first-child */
-table {
-    width: 50%;
-    margin: 15px auto;
-    border-collapse: collapse;
-    background-color: var(--card-bg);
-}
-
-th, td {
-    border: 1px solid var(--border-light);
-    padding: 10px;
-}
-
-/* First column styled */
-table td:first-child {
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-/* Table header */
-th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* 2. ::marker for order history list */
-.order-history li::marker {
-    color: var(--accent-color);
-    font-size: 1.3em;
-}
-
-/* 3. ::before and ::after for user reviews */
-blockquote {
-    font-style: italic;
-    background-color: #ffffff;
-    padding: 10px 15px;
-    margin: 10px auto;
-    width: 60%;
-    border-left: 5px solid var(--accent-color);
-}
-
-/* Opening quotation mark */
-blockquote::before {
-    content: "“";
-    color: var(--accent-color);
-    font-size: 2em;
-}
-
-/* Closing quotation mark */
-blockquote::after {
-    content: "”";
-    color: var(--accent-color);
-    font-size: 2em;
-}
->>>>>>> 9c6619e429f9fff904b5c9d5b5f25dad17c53b1a

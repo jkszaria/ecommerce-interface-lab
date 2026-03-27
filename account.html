@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
 
 <header>
   <div class="header-inner">
-    <a href="landing.html" class="logo">Store</a>
+    <a href="landing.html" class="logo">MyStore</a>
     <nav>
       <ul>
         <li><a href="landing.html">Home</a></li>
@@ -23,215 +22,53 @@
   </div>
 </header>
 
-<div style="max-width: 800px; margin: 0 auto; padding: 20px;">
-  <h1 style="text-align:center;">Welcome, Princess</h1>
+<div class="account-layout">
 
-  <nav>
-    <ul style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; list-style:none; padding:0;">
-      <li><a href="#order-history">Order History</a></li>
-      <li><a href="#profile-settings">Profile Settings</a></li>
-      <li><a href="#wishlist">Wishlist</a></li>
-    </ul>
-  </nav>
+  
+  <h1 id="account-greeting" style="text-align:center;"></h1>
 
-  <hr>
-
-  <h2 id="order-history">Order History</h2>
-
-  <details>
-    <summary><b>Order #12345</b> - January 15, 2024 - Total: $75.00</summary>
-    <p><b>Status:</b> Delivered</p>
-    <p><b>Items:</b> Sony Headphones (2), Controller (1)</p>
-    <p><b>Total:</b> $75.00</p>
-  </details>
-
-  <details>
-    <summary><b>Order #12344</b> - January 10, 2024 - Total: $150.00</summary>
-    <p><b>Status:</b> Delivered</p>
-    <p><b>Items:</b> Nintendo Switch (1), Mechanical Keyboard (2)</p>
-    <p><b>Total:</b> $150.00</p>
-  </details>
-
-  <details>
-    <summary><b>Order #12343</b> - December 28, 2023 - Total: $45.00</summary>
-    <p><b>Status:</b> Delivered</p>
-    <p><b>Items:</b> Sony Headphones (3)</p>
-    <p><b>Total:</b> $45.00</p>
-  </details>
-
-  <hr>
-
-  <h3>Recent Purchases</h3>
-  <dl>
-    <dt>Order #12345 - January 15, 2024</dt>
-    <dd>Status: Delivered | Total: $75.00</dd>
-    <dt>Order #12344 - January 10, 2024</dt>
-    <dd>Status: Delivered | Total: $150.00</dd>
-    <dt>Order #12343 - December 28, 2023</dt>
-    <dd>Status: Delivered | Total: $45.00</dd>
-  </dl>
-
-  <hr>
-
-  <h2 id="profile-settings">Profile Settings</h2>
-  <form>
-    <label>Name: <input type="text" value="Princess" required></label><br><br>
-    <label>Email: <input type="email" value="Princess@example.com" required></label><br><br>
-    <label>Password: <input type="password" required></label><br><br>
-    <button>Save Changes</button>
-  </form>
-
-  <hr>
-
-  <h2 id="wishlist">My Wishlist</h2>
-  <!-- [LAB 3 - CHANGED] replaced <table> layout with .product-grid (Task 3) -->
-  <div class="product-grid">
-    <article>
-      <img src="pics/product1.png" alt="Product One">
-      <p>Sony Headphones - $10</p>
-      <button>Add to Cart</button>
-    </article>
-    <article>
-      <img src="pics/product3.webp" alt="Product Three">
-      <p>Nintendo Switch - $120</p>
-      <button>Add to Cart</button>
-    </article>
-  </div>
-</div>
-
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>User Account Management</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-  <nav>
-    <center>
-      <ul>
-        <li><a href="landing.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="cart.html">Shopping Cart</a></li>
-        <li><a href="account.html">Account</a></li>
-      </ul>
-    </center>
-  </nav>
-</header>
-
-<hr>
-<center>
-  <h1>Welcome, Princess</h1>
-</center>
-
-<!-- Navigation for account-specific links -->
-<nav>
-  <center>
+  <nav class="account-tabs">
     <ul>
       <li><a href="#order-history">Order History</a></li>
       <li><a href="#profile-settings">Profile Settings</a></li>
       <li><a href="#wishlist">Wishlist</a></li>
     </ul>
-  </center>
-</nav>
+  </nav>
 
-<hr>
+  <hr>
 
-<!-- Order History -->
-<center>
+
   <h2 id="order-history">Order History</h2>
-</center>
+  <div id="order-list"></div>
 
-<ul class="order-history">
+  <hr>
 
-  <li>
-    <details>
-      <summary><b>Order #12345</b> - January 15, 2024 - Total: $75.00</summary>
-      <p><b>Status:</b> Delivered</p>
-      <p><b>Items:</b> Sony Headphones (2), Controller (1)</p>
-      <p><b>Total:</b> $75.00</p>
-    </details>
-  </li>
-
-  <li>
-    <details>
-      <summary><b>Order #12344</b> - January 10, 2024 - Total: $150.00</summary>
-      <p><b>Status:</b> Delivered</p>
-      <p><b>Items:</b> Nintendo Switch (1), Mechanical Keyboard (2)</p>
-      <p><b>Total:</b> $150.00</p>
-    </details>
-  </li>
-
-  <li>
-    <details>
-      <summary><b>Order #12343</b> - December 28, 2023 - Total: $45.00</summary>
-      <p><b>Status:</b> Delivered</p>
-      <p><b>Items:</b> Sony Headphones (3)</p>
-      <p><b>Total:</b> $45.00</p>
-    </details>
-  </li>
-
-</ul>
-
-<hr>
-
-<!-- Alternative: Using Description List -->
-<center>
-  <h3>Recent Purchases</h3>
-</center>
-
-<dl>
-  <dt>Order #12345 - January 15, 2024</dt>
-  <dd>Status: Delivered | Total: $75.00</dd>
-
-  <dt>Order #12344 - January 10, 2024</dt>
-  <dd>Status: Delivered | Total: $150.00</dd>
-
-  <dt>Order #12343 - December 28, 2023</dt>
-  <dd>Status: Delivered | Total: $45.00</dd>
-</dl>
-
-<hr>
-
-<!-- Profile Settings Form -->
-<center>
   <h2 id="profile-settings">Profile Settings</h2>
-
-  <form>
-    <label>Name: <input type="text" value="Princess" required></label><br>
-    <label>Email: <input type="email" value="Princess@example.com" required></label><br>
-    <label>Password: <input type="password" required></label><br>
-    <button>Save Changes</button>
+  <form class="profile-form">
+    <label>Name: <input type="text" id="profile-name" required></label>
+    <label>Email: <input type="email" id="profile-email" required></label>
+    <label>Password: <input type="password" required></label>
+    <button type="submit">Save Changes</button>
   </form>
-</center>
 
-<hr>
+  <hr>
 
-<!-- Wishlist -->
-<center>
   <h2 id="wishlist">My Wishlist</h2>
-  
-  <table>
-    <tr>
-      <td>
-        <img src="pics/product1.png" alt="Product One" width="100">
-        <p>Sony Headphones - $10</p>
-        <button>Add to Cart</button>
-      </td>
-      <td>
-        <img src="pics/product3.webp" alt="Product Three" width="100">
-        <p>Nintendo Switch - $120</p>
-        <button>Add to Cart</button>
-      </td>
-    </tr>
-  </table>
-</center>
+  <div class="product-grid">
+    <article>
+      <img src="pics/product1.png" alt="Sony Headphones">
+      <p>Sony Headphones — $10</p>
+      <button class="add-to-cart" data-id="1">Add to Cart</button>
+    </article>
+    <article>
+      <img src="pics/product3.webp" alt="Nintendo Switch">
+      <p>Nintendo Switch — $120</p>
+      <button class="add-to-cart" data-id="3">Add to Cart</button>
+    </article>
+  </div>
 
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
->>>>>>> 9c6619e429f9fff904b5c9d5b5f25dad17c53b1a
