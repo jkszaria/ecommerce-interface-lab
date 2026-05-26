@@ -1,4 +1,8 @@
-// we created a Product class so we can make product objects more easily. Instead of writing out the same properties every time, just call new Product() and pass in the values we need.
+// ============================================================
+// SCRIPT.JS - Lab 6 (DOM Scripting) + Lab 10 (JWT Auth)
+// ============================================================
+
+// we created a Product class so we can make product objects more easily.
 class Product {
     constructor(id, name, price, image) {
         this.id = id;
@@ -21,59 +25,228 @@ const products = [
     new Product(10, "Laptop Stand",        25.00,  "pics/product10.avif")
 ];
 
-// we set the shipping fee as a constant at the top so if we ever need to change it, we only have to change it in one place.
 const SHIPPING_FEE = 5.00;
 
-// we learned that JavaScript resets every time you go to a new page, so the cart would always be empty when we navigate away. we fixed this by saving the cart to localStorage, which keeps the data even when the page changes.
+// ============================================================
+// LAB 10 - JWT AUTHENTICATION FUNCTIONS
+// Uses the Fetch API to communicate with the Spring Boot backend
+// ============================================================
+
+// Base URL of the backend API
+const API_BASE_URL = 'http://localhost:8080';
+
+/**
+ * Logs in a user by sending credentials to the backend.
+ * If successful, stores the JWT token in localStorage.
+ *
+ * @param {string} username - the username to log in with
+ * @param {string} password - the password to log in with
+ * @returns {string} the JWT token if login succeeds
+ * @throws {Error} if login fails
+ */
+async function login(username, password) {
+    const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
+    }
+
+    const data = await response.json();
+    // Store the token in localStorage so we can use it for future requests
+    localStorage.setItem('jwt_token', data.token);
+    return data.token;
+}
+
+/**
+ * Registers a new user account on the backend.
+ *
+ * @param {string} username - the username to register
+ * @param {string} password - the password to register with
+ * @returns {object} the response data from the server
+ * @throws {Error} if registration fails
+ */
+async function register(username, password) {
+    const response = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password, role: 'ROLE_USER' })
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
+    }
+
+    return await response.json();
+}
+
+/**
+ * Makes an authenticated request to a protected API endpoint.
+ * Automatically includes the JWT token in the Authorization header.
+ *
+ * @param {string} endpoint - the API endpoint to call (e.g. '/api/v1/products')
+ * @param {string} method - the HTTP method (GET, POST, PUT, DELETE, PATCH)
+ * @param {object} body - the request body for POST/PUT/PATCH requests
+ * @returns {object} the response data from the server
+ * @throws {Error} if the request fails or token is invalid
+ */
+async function fetchWithAuth(endpoint, method = 'GET', body = null) {
+    // Get the token from localStorage
+    const token = localStorage.getItem('jwt_token');
+
+    if (!token) {
+        throw new Error('No token found. Please log in.');
+    }
+
+    const options = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            // Include the JWT token in the Authorization header
+            'Authorization': `Bearer ${token}`
+        }
+    };
+
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+
+    // If token is expired or invalid, redirect to login
+    if (response.status === 401) {
+        console.error('Unauthorized: Token expired or invalid');
+        localStorage.removeItem('jwt_token');
+        window.location.href = 'login.html';
+        return;
+    }
+
+    if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    // Return empty for 204 No Content
+    if (response.status === 204) return null;
+
+    return await response.json();
+}
+
+/**
+ * Logs out the current user by removing the JWT token from localStorage.
+ */
+function logout() {
+    localStorage.removeItem('jwt_token');
+    window.location.href = 'landing.html';
+}
+
+/**
+ * Checks if the user is currently logged in.
+ *
+ * @returns {boolean} true if a token exists in localStorage
+ */
+function isLoggedIn() {
+    return localStorage.getItem('jwt_token') !== null;
+}
+
+// ============================================================
+// Handle login form submission (on login.html)
+// ============================================================
+const loginForm = document.querySelector('#login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const username = document.querySelector('#login-username').value;
+        const password = document.querySelector('#login-password').value;
+        const errorMsg = document.querySelector('#login-error');
+
+        try {
+            await login(username, password);
+            // Redirect to landing page after successful login
+            window.location.href = 'landing.html';
+        } catch (error) {
+            errorMsg.textContent = error.message;
+        }
+    });
+}
+
+// ============================================================
+// Handle register form submission (on signup.html)
+// ============================================================
+const registerForm = document.querySelector('#register-form');
+if (registerForm) {
+    registerForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const username = document.querySelector('#register-username').value;
+        const password = document.querySelector('#register-password').value;
+        const errorMsg = document.querySelector('#register-error');
+
+        try {
+            await register(username, password);
+            // Redirect to login page after successful registration
+            window.location.href = 'login.html';
+        } catch (error) {
+            errorMsg.textContent = error.message;
+        }
+    });
+}
+
+// Show logout button if logged in
+const logoutBtn = document.querySelector('#logout-btn');
+if (logoutBtn) {
+    if (isLoggedIn()) {
+        logoutBtn.style.display = 'block';
+        logoutBtn.addEventListener('click', logout);
+    }
+}
+
+// ============================================================
+// ORIGINAL LAB 6 CODE BELOW - unchanged
+// ============================================================
 
 function loadCart() {
     const saved = localStorage.getItem('cartItems');
-    // If there's nothing saved yet, we return an empty array as a default
     return saved ? JSON.parse(saved) : [];
 }
 
 function saveCart(cart) {
-    // localStorage can only store strings, so we used JSON.stringify to convert our array into a string before saving it
     localStorage.setItem('cartItems', JSON.stringify(cart));
 }
 
-// we load the cart right away when the script runs so it's always up to date
 let cartItems = loadCart();
 
-// we used document.querySelector to select the product grid container.  we also check if it exists first because this element is only on products.html, so on other pages it would be null and cause an error.
 const productContainer = document.querySelector('.product-grid');
 
 if (productContainer) {
-
-    // we clear the container first so there's no duplicate static HTML
     productContainer.textContent = '';
 
-    // we used .forEach() to loop through every product in the array. For each product, we build a card and add it to the page.
     products.forEach(function(product) {
-
-        // we used document.createElement('article') to create the card element. This is safer than using innerHTML because it won't accidentally run any scripts hidden inside the content.
         const card = document.createElement('article');
-
-        // we created the image element and set its src and alt properties
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = product.name;
 
-        // we used createElement('h3') for the product name and createTextNode to safely set the text inside it
         const name = document.createElement('h3');
         name.appendChild(document.createTextNode(product.name));
 
-        // we used createElement('p') for the price and .toFixed(2) to make sure it always shows two decimal places like $10.00
         const price = document.createElement('p');
         price.appendChild(document.createTextNode('Price: $' + product.price.toFixed(2)));
 
-        // we created the Add to Cart button and used setAttribute to store the product id in a data-id attribute. This way when the button is clicked, we can read the id to know which product was added.
         const btn = document.createElement('button');
         btn.appendChild(document.createTextNode('Add to Cart'));
         btn.setAttribute('data-id', product.id);
         btn.classList.add('add-to-cart');
 
-        // we used appendChild to attach each element to the card in order,then attached the whole card to the grid
         card.appendChild(img);
         card.appendChild(name);
         card.appendChild(price);
@@ -83,28 +256,13 @@ if (productContainer) {
     });
 }
 
-
-
-
-// Instead of adding a separate addEventListener to every single button, we added just one listener to document.body. This works because click events "bubble up" from the button all the way to the body. we then check if the clicked element is an add-to-cart button before doing anything.
-
-
-
 document.body.addEventListener('click', function(event) {
-
     if (event.target.classList.contains('add-to-cart')) {
-
         const productId = parseInt(event.target.getAttribute('data-id'));
-
-        const foundProduct = products.filter(function(p) {
-            return p.id === productId;
-        })[0];
+        const foundProduct = products.filter(function(p) { return p.id === productId; })[0];
 
         if (foundProduct) {
-
-            const existing = cartItems.filter(function(p) {
-                return p.id === productId;
-            })[0];
+            const existing = cartItems.filter(function(p) { return p.id === productId; })[0];
 
             if (existing) {
                 existing.quantity += 1;
@@ -123,22 +281,16 @@ document.body.addEventListener('click', function(event) {
             const card = event.target.closest('article');
             if (card) {
                 card.classList.add('fade-in');
-                setTimeout(function() {
-                    card.classList.remove('fade-in');
-                }, 600);
+                setTimeout(function() { card.classList.remove('fade-in'); }, 600);
             }
 
             event.target.textContent = '✓ Added!';
-            setTimeout(function() {
-                event.target.textContent = 'Add to Cart';
-            }, 1000);
+            setTimeout(function() { event.target.textContent = 'Add to Cart'; }, 1000);
 
             renderCart();
         }
     }
 });
-
-
 
 function renderCart() {
     const cartList   = document.querySelector('.cart-container');
@@ -147,7 +299,6 @@ function renderCart() {
     if (!cartList) return;
 
     cartItems = loadCart();
-
     cartList.textContent = '';
 
     if (cartItems.length === 0) {
@@ -159,7 +310,6 @@ function renderCart() {
     }
 
     cartItems.forEach(function(item) {
-
         const li   = document.createElement('li');
         const img  = document.createElement('img');
         img.src    = item.image;
@@ -188,15 +338,9 @@ function renderCart() {
             const productId = parseInt(this.getAttribute('data-id'));
 
             if (newQty <= 0) {
-                cartItems = cartItems.filter(function(p) {
-                    return p.id !== productId;
-                });
+                cartItems = cartItems.filter(function(p) { return p.id !== productId; });
             } else {
-                cartItems.forEach(function(p) {
-                    if (p.id === productId) {
-                        p.quantity = newQty;
-                    }
-                });
+                cartItems.forEach(function(p) { if (p.id === productId) p.quantity = newQty; });
             }
 
             saveCart(cartItems);
@@ -245,11 +389,9 @@ function renderCheckoutSummary() {
 
 renderCheckoutSummary();
 
-
 const checkoutForm = document.querySelector('.checkout-form');
 
 if (checkoutForm) {
-
     checkoutForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -276,7 +418,6 @@ if (checkoutForm) {
         }
     });
 }
-
 
 const currentUser = {
     name: 'Princess',
@@ -327,9 +468,7 @@ if (profileEmail) profileEmail.value = currentUser.email;
 const orderList = document.querySelector('#order-list');
 
 if (orderList) {
-
     currentUser.orderHistory.forEach(function(order) {
-
         const details = document.createElement('details');
         details.classList.add('order-details');
 
@@ -340,7 +479,6 @@ if (orderList) {
         details.appendChild(summary);
 
         summary.addEventListener('click', function() {
-
             if (details.querySelector('.order-body')) return;
 
             let itemsHTML = '';
