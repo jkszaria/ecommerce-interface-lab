@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="landing.html" class="logo">MyStore</a>
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div style="max-width: 400px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; border: 1px solid #ddd;">
+  <h1 style="text-align:center;">Login</h1>
+
+  <!-- login-form id is used by script.js to handle submission -->
+  <form id="login-form">
+    <label>Username:<br>
+      <input type="text" id="login-username" required style="width:100%; padding:8px; margin-bottom:12px;">
+    </label><br>
+    <label>Password:<br>
+      <input type="password" id="login-password" required style="width:100%; padding:8px; margin-bottom:12px;">
+    </label><br>
+    <!-- login-error id is used by script.js to show error messages -->
+    <p id="login-error" style="color:red;"></p>
+    <button type="submit" style="width:100%;">Login</button>
+  </form>
+
+  <p style="text-align:center;">Don't have an account? <a href="signup.html">Register here</a></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
